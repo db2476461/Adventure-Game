@@ -89,19 +89,19 @@ function moveright() {
 
 document.onkeydown = function (e) {
     switch (e.key) {
-        case 'ArrowUp':
+        case 'w':
             console.log("arrow key up");
             moveup();
             break;
-        case 'ArrowDown':
+        case 's':
             // down arrow
             movedown();
             break;
-        case 'ArrowLeft':
+        case 'a':
             // left arrow
             moveleft();
             break;
-        case 'ArrowRight':
+        case 'd':
             moveright();
     }
 }

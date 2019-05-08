@@ -5,15 +5,26 @@
 
         <!--The canvas is the area of the program in which the game is drawn.-->
       <!--- <canvas id="ctx" width="500" height="500" style="border:1px solid #000000;"></canvas> -->
-        <h3>move with arrow key</h3>
+       
         <script src="script.js"></script>
-        
+        <script src="canvasanimation.js"></script>
+        <style>
+                html, body {
+                  width: 100%;
+                  height: 100%;
+                  margin: 0px;
+                  border: 0;
+                  overflow: hidden; /*  Disable scrollbars */
+                  display: block;  /* No floating content on sides */
+                }
+                </style>
     </head>
     
     
             <body onload="startGame()">
                     <script>
-                        </script>
+                 </script>
+                 <canvas id="coinAnimation"></canvas>
 
     </body>
 </html>

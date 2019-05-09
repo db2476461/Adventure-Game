@@ -80,11 +80,7 @@ function component(width, height, color, x, y) {
 }
 
 function moveup() {
-    if(! (this.y > window.innerHeight))
-    {
-        myGamePiece.speedY = 0;
-        console.log(window.innerHeight);
-    }
+   
     myGamePiece.speedY -= 5; 
 }
 

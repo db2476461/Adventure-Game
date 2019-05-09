@@ -65,7 +65,9 @@ function component(width, height, color, x, y) {
       this.y += this.speedY; 
     } 
   }
-
+/*
+dfgdfgdf
+dfgdfg*/
 
   function updateGameArea() {
     myGameArea.clear();

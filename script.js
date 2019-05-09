@@ -99,7 +99,7 @@ function moveright() {
 document.onkeydown = function (e) {
     switch (e.key) {
         case 'w':
-            console.log("arrow key up");
+          
             moveup();
             break;
         case 's':
@@ -112,5 +112,22 @@ document.onkeydown = function (e) {
             break;
         case 'd':
             moveright();
+            break;
+
+        case 'W':
+          
+            moveup();
+            break;
+        case 'S':
+            // down arrow
+            movedown();
+            break;
+        case 'A':
+            // left arrow
+            moveleft();
+            break;
+        case 'D':
+            moveright();
+        
     }
 }

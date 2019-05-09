@@ -60,14 +60,18 @@ function component(width, height, color, x, y) {
     }
     //if (x > canvas.width) x = 0;
     //if(y > canvas.height) y  = 0;
+  //  this.newPos = function() {
+   //   this.x += this.speedX;
+   //   this.y += this.speedY;  
+    //takeout the + on += to remove gravity
+   // } 
+
     this.newPos = function() {
-      this.x += this.speedX;
-      this.y += this.speedY; 
-    } 
+        this.x = this.speedX;
+        this.y = this.speedY; 
+      }
   }
-/*
-dfgdfgdf
-dfgdfg*/
+
 
   function updateGameArea() {
     myGameArea.clear();
@@ -81,19 +85,19 @@ function moveup() {
         myGamePiece.speedY = 0;
         console.log(window.innerHeight);
     }
-    myGamePiece.speedY -= 1; 
+    myGamePiece.speedY -= 5; 
 }
 
 function movedown() {
-    myGamePiece.speedY += 1; 
+    myGamePiece.speedY += 5; 
 }
 
 function moveleft() {
-    myGamePiece.speedX -= 1; 
+    myGamePiece.speedX -= 5; 
 }
 
 function moveright() {
-    myGamePiece.speedX += 1; 
+    myGamePiece.speedX += 5; 
 }
 
 document.onkeydown = function (e) {

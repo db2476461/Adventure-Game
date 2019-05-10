@@ -3,10 +3,11 @@ body {
     height: 100%;
     margin: 0px;
     border: 0;
+
     overflow: hidden; /*  Disable scrollbars */
     display: block;  /* No floating content on sides */
     background-image: url("Game_Background_142.png");
-    background-repeat: repeat-x;
+    background-repeat: repeat-x; /* makes the background repeat in x axis
 
     /*background-repeat:no-repeat;*/
     }

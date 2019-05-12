@@ -81,9 +81,14 @@ function component(width, height, color, x, y) {
      * weird ways of calling a function
      */
     this.update = function() {
-      ctx = myGameArea.context;
-      ctx.fillStyle = color;
-      ctx.fillRect(this.x, this.y, this.width, this.height);
+        /**
+         * Special note: ctx is short for the word "context". It is simply a variable.
+         *  */ 
+        ctx = myGameArea.context;
+        //set color
+        ctx.fillStyle = color;
+        //ex draw a rectangle
+        ctx.fillRect(this.x, this.y, this.width, this.height);
     }
 
 
@@ -93,11 +98,11 @@ function component(width, height, color, x, y) {
      */
     //if (x > canvas.width) x = 0;
     //if(y > canvas.height) y  = 0;
-  //  this.newPos = function() {
-   //   this.x += this.speedX;
-   //   this.y += this.speedY;  
+    //this.newPos = function() {
+    //this.x += this.speedX;
+    //this.y += this.speedY;  
     //takeout the + on += to remove gravity
-   // } 
+    // } 
 
     /**
      * this line gives the box a constant speed without the velocity
@@ -106,15 +111,14 @@ function component(width, height, color, x, y) {
     this.newPos = function() {
         this.x = this.speedX;
         this.y = this.speedY; 
-      }
-  }
+        }
+    }
 
 
 /**
  * draws the object on the screen 
  */
-
-  function updateGameArea() {
+function updateGameArea() {
     myGameArea.clear();
     myGamePiece.newPos();    
     myGamePiece.update();

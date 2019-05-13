@@ -93,7 +93,7 @@ function component(width, height, color, x, y) {
      */
     this.update = function() {
         
-        //Special note: ctx is short for the word "context". It is simply a variable.
+        //special note: ctx is shorthand for the word "context". It is simply a variable.
         ctx = myGameArea.context;
         //set color
         ctx.fillStyle = color;

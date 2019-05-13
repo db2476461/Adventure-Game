@@ -47,6 +47,13 @@ var myGameArea = {
         this.canvas.width = window.innerWidth;
         this.canvas.height = window.innerHeight;
         this.context = this.canvas.getContext("2d");
+        /**
+         * special note: insertBefore() is a DOM method. It inserts a node as a child, 
+         * right before an existing child such that document.body.insertBefore(newItem, list.childNodes[0]);
+         * 
+         * Node Definition: an interface from which a number of DOM API object types inherit. 
+         * It allows those types to be treated similarly; for example, inheriting the same set of methods, or being tested in the same way.
+         */
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         /**
          * this updates the location of the object and the background by calling 

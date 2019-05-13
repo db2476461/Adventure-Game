@@ -41,6 +41,8 @@ var myGameArea = {
     start : function() {
         /**
          * this.canvas.with = window.innerwith; creates the game area relative to the users screen 
+         * special note: innerWidth is a DOM window property. The innerWidth property returns the width of a window's content area. 
+         * special note: innerHeight is a DOM window property. The innerHeight property returns the height of a window's content area.
          */
         this.canvas.width = window.innerWidth;
         this.canvas.height = window.innerHeight;
@@ -49,6 +51,8 @@ var myGameArea = {
         /**
          * this updates the location of the object and the background by calling 
          * the gameupdate function
+         * special note: setInterval() is a DOM method which takes two parameters such that myVar = setInterval("javascript function", milliseconds);
+         * there are 1000 miliseconds in a second so 20 milliseconds would be 0.02 seconds
          */
         this.interval = setInterval(updateGameArea, 20);
     },
@@ -81,9 +85,8 @@ function component(width, height, color, x, y) {
      * weird ways of calling a function
      */
     this.update = function() {
-        /**
-         * Special note: ctx is short for the word "context". It is simply a variable.
-         *  */ 
+        
+        //Special note: ctx is short for the word "context". It is simply a variable.
         ctx = myGameArea.context;
         //set color
         ctx.fillStyle = color;

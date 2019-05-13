@@ -64,7 +64,7 @@ var myGameArea = {
         this.interval = setInterval(updateGameArea, 20);
     },
     /**
-     * this is just for garbage collection 
+     * special note: clear() method, all movements of the component will leave a trail of where it was positioned in the last frame: 
      */
     clear : function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -73,6 +73,9 @@ var myGameArea = {
 
 
 function startGame() {
+    /**
+     * special note: component() is a component object constructor, which lets you add components onto the gamearea.
+     */
     myGamePiece = new component(30, 30, "red", 10, 120);
     myGameArea.start();
 }

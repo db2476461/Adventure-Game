@@ -91,19 +91,42 @@ function component(width, height, color, x, y) {
     this.speedY = 0;
     this.x = x;
     this.y = y; 
+    tick = 1;
+    this.angle = 0;
     /**
      * weird ways of calling a function
      */
+    //this.rotate(x/20);
     this.update = function() {
         
         //special note: ctx is shorthand for the word "context". It is simply a variable.
         ctx = myGameArea.context;
+        ctx.save();
         //set color
         ctx.fillStyle = color;
+       // ctx.translate(this.x, this.y);
+       //ctx.resetTransform();
+    
+      //  ctx.rotate( tick++ );
+       
+      //  ctx.fillRect( this.x +(this.width / -2), this.height / -2, this.width, this.height); 
+    
+      // console.log("x pos", this.x);
         //ex draw a rectangle
+       // ctx.translate(this.x, this.y);
+        //ctx.translate(110, tick++);
+       
         ctx.fillRect(this.x, this.y, this.width, this.height);
-    }
 
+        ctx.translate(this.x, this.y);
+        ctx.restore(); 
+
+
+
+
+       
+    }
+  //Math.PI 
 
     /**
      *  the commented lines are for controlling the movement speed of the character
@@ -122,8 +145,24 @@ function component(width, height, color, x, y) {
      */
 
     this.newPos = function() {
+       // if(this.y > 485)
+       // {
+       //     this.speedY = 485;
+       //     console.log("true");
+       //     console.log("speedy", this.speedY)
+      //  }
         this.x = this.speedX;
         this.y = this.speedY; 
+         this.y = y++;
+        if(this.y > 485)
+        {
+            this.y = 0;
+            newPos;
+        }
+
+        console.log("window heigh", window.innerHeight);
+        console.log("y pos", this.y)
+     
         }
     }
 
@@ -135,6 +174,7 @@ function updateGameArea() {
     myGameArea.clear();
     myGamePiece.newPos();    
     myGamePiece.update();
+   
 }
 /**
  * start of movement function on all direction

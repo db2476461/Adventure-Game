@@ -63,11 +63,13 @@
     //drawImage is user define function
     // we actually used ctx.drawImage to draw on the screen
     var ofset = 5;
+    
     function drawImage(){
-      ctx.clearRect(x,y,width,height);
+      ctx.clearRect(x ,y,width,height);
       updateFrame();
       //
-      ctx.drawImage(character, scrX, scrY, width, height, x, y, width, height );
+      
+      ctx.drawImage(character, scrX, scrY, width, height, x , y, width, height );
       
       
     }
@@ -108,6 +110,7 @@
     function moveright() {
       //ctx.clearRect(x,y,width,height);
       x += speed; 
+      console.log("x ", x);
      
     }
 

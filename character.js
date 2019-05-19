@@ -9,10 +9,11 @@
     var canWidth = window.innerWidth;
     var canHeight = window.innerHeight;
     var x = 0;
-    var y = 0; // define the pos  the animation to draw on canvas 
+    var y = 330; // define the pos  the animation to draw on canvas 
     // this is the location of the sprite on the canvas
     var scrX;
     var scrY;
+    var speed = 5;
     //this is the sizeof the sprite sheet which is sliced by frameCol and frameRow
     var sheetWidth = 864;
     var sheetHeight = 280;
@@ -47,28 +48,41 @@
     //time we need to draw to prevent ghosting
     function updateFrame(){
       //clearReact prevents ghosting
-      ctx.clearRect(x,y,width,height);
+     
       //the next line moves the slice frame 
       currentFrame = ++currentFrame % frameCol; //loop around the frame
+     
       scrX = currentFrame * width;
+     
       scrY = 0;
 
-    
+      
 
     }
     // this function handles the graphics
     //drawImage is user define function
     // we actually used ctx.drawImage to draw on the screen
+    var ofset = 5;
     function drawImage(){
+      ctx.clearRect(x,y,width,height);
       updateFrame();
+      //
       ctx.drawImage(character, scrX, scrY, width, height, x, y, width, height );
+      
+      
     }
     // this weird function is created and called on itself
     //with interval of 100 millisecs
     setInterval(function(){
-    
+      
       drawImage();
+      
     }, 100);
+
+    
+
+
+
     //these are movement function
     /*i copied and paste this one from the old code
 
@@ -76,24 +90,25 @@
     */
 
     function moveup() {
-      ctx.clearRect(x,y,width,height);
+      //ctx.clearRect(x,y,width,height);
    
-      y -= 5; 
+      y -= speed; 
     }
 
     function movedown() {
-      ctx.clearRect(x,y,width,height);
-      y += 5; 
+      //ctx.clearRect(x,y,width,height);
+      y += speed; 
     }
 
     function moveleft() {
-      ctx.clearRect(x,y,width,height);
-      x -= 5; 
+      //ctx.clearRect(x,y,width,height);
+      x -= speed; 
     }
 
     function moveright() {
-      ctx.clearRect(x,y,width,height);
-      x += 5; 
+      //ctx.clearRect(x,y,width,height);
+      x += speed; 
+     
     }
 
 /**

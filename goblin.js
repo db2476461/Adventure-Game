@@ -80,18 +80,25 @@ setInterval(function(){
 }
 
 function createCharacter(){
-  var x = 0;
-    var y = 330; // define the pos  the animation to draw on canvas 
+    var canvasWidth = 1400; 
+    var canvasHeight = 350;
+
+    var x = 0;
+    var y = 275; // define the pos  the animation to draw on canvas 
     // this is the location of the sprite on the canvas
     var scrX;
     var scrY;
-    var speed = 5;
+    var speed = 12;
     //this is the sizeof the sprite sheet which is sliced by frameCol and frameRow
     var sheetWidth = 864;
     var sheetHeight = 280;
     //this is the number of frame contained in the sprite sheet
     var frameCol = 8;
     var frameRow = 2;
+
+    var trackRight = 0;
+    var trackLeft = 1;
+
     // this is where the frame gets slice   
     var width = sheetWidth / frameCol;
     var height = sheetHeight / frameRow;
@@ -102,17 +109,21 @@ function createCharacter(){
     // we need to clear the canvas every 
     //time we need to draw to prevent ghosting
     function updateFrame(){
-      //clearReact prevents ghosting
-     
       //the next line moves the slice frame 
       currentFrame = ++currentFrame % frameCol; //loop around the frame
-     
       scrX = currentFrame * width;
-     
       scrY = 0;
+      //clearReact prevents ghosting
+      ctx.clearRect(x, y, width, height);
 
-      
-
+      if(left && x>0){
+        srcY = trackLeft * height; 
+        x-=speed; 
+      }
+      if(right && x<canvasWidth-width){
+        srcY = trackRight * height; 
+        x+=speed; 
+      }
     }
     // this function handles the graphics
     //drawImage is user define function
@@ -120,43 +131,28 @@ function createCharacter(){
     var ofset = 5;
     
     function drawImage(){
-      ctx.clearRect(x ,y,width,height);
       updateFrame();
-      //
-      
       ctx.drawImage(character, scrX, scrY, width, height, x , y, width, height );
       
       
     }
-    // this weird function is created and called on itself
-    //with interval of 100 millisecs
-    setInterval(function(){
-      
-      drawImage();
-      
-    }, 100);
 
-    function moveup() {
-      //ctx.clearRect(x,y,width,height);
+    // function moveup() {
+    //   y -= speed; 
+    // }
     
-      y -= speed; 
-    }
-    
-    function movedown() {
-      //ctx.clearRect(x,y,width,height);
-      y += speed; 
-    }
+    // function movedown() {
+    //   y += speed; 
+    // }
     
     function moveleft() {
-      //ctx.clearRect(x,y,width,height);
-      x -= speed; 
+      left = true; 
+      right = false; 
     }
     
     function moveright() {
-      //ctx.clearRect(x,y,width,height);
-      x += speed; 
-      console.log("x ", x);
-     
+      left = false;
+			right = true;
     }
     
     document.onkeydown = function (e) {
@@ -196,8 +192,19 @@ function createCharacter(){
           
       }}
 
-    
+  
+      
+   /* this weird function is created and called on itself
+  with interval of 100 millisecs. Replaced with setInterval(drawImage,100);
+  setInterval(function(){
+      
+  drawImage();
+      
+  }, 100);
+  */
+  setInterval(drawImage,100);   
 }
+
 
 
 /**Program starts here */
